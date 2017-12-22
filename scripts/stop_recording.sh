@@ -1,4 +1,6 @@
 #!/bin/bash
+# Kills the record.sh script associated with raspidash, as well as anything using the avconv service
+# github.com/smugzombie
 
 recordingPID=$(ps aux | grep record.sh | grep -v grep | awk {'print $2'})
 for i in $recordingPID; do
