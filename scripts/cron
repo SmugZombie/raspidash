@@ -1,0 +1,2 @@
+@reboot /bin/sleep 30; /usr/bin/nohup /usr/bin/python /opt/raspidash/raspidash.py &
+
