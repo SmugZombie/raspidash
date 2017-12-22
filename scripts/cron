@@ -1,4 +1,4 @@
 @reboot /usr/local/bin/blinkstick purple --pulse
-@reboot /bin/sleep 15; /opt/raspidash/scripts/start_webserver.sh
+@reboot /bin/sleep 15; /bin/bash /opt/raspidash/scripts/start_webserver.sh
 @reboot /bin/sleep 30; /usr/bin/nohup /usr/bin/python /opt/raspidash/raspidash.py &
 
