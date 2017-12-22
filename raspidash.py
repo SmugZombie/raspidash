@@ -12,28 +12,27 @@ disconnect_count = 0
 camera_status = 0
 statusFile="/tmp/camera.status"
 #proc = None
-
+#/sbin/modprobe bcm2835-v4l2
 target_hostname = "SmugPhone"
 target_mac = "B8:53:AC:79:3F:56"
 
 print "RaspiDash Debug"
 
+def warmUpCamera():
+    warmer = subprocess.check_output("/sbin/modprobe bcm2835-v4l2", shell=True)
+
 def stopRecording():
-#    writeToFile("0")
     test = subprocess.check_output("/bin/bash /opt/raspidash/scripts/stop_recording.sh", shell=True)
-#    proc.kill()
 
 def resumeRecording():
-#    global proc
-#    writeToFile("1")
-    #test = subprocess.check_output("/bin/bash /opt/raspidash/scripts/start_recording.sh", shell=True)
-#    proc = subprocess.Popen(["/bin/bash","/opt/raspidash/scripts/start_recording.sh"], stdout=subprocess.PIPE,      stderr=subprocess.PIPE, shell=True)
     os.system("/bin/bash /opt/raspidash/scripts/start_recording.sh")
 
 def writeToFile(value):
     f = open(statusFile,'w')
     f.write(value)
     f.close()
+
+warmUpCamera()
 
 while True:
     #print "Checking " + time.strftime("%a, %d %b %Y %H:%M:%S", time.gmtime())
