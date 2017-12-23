@@ -8,11 +8,14 @@ import subprocess
 import bluetooth
 import time
 import os
-from blinkstick import blinkstick
-
+try:
+	from blinkstick import blinkstick
+except:
+	blinkstick_enabled = False
 # Global Variables
-led = blinkstick.find_first()
-led.set_color(name="yellow")
+if blinkstick_enabled:
+	led = blinkstick.find_first()
+	led.set_color(name="yellow")
 disconnect_count = 0
 camera_status = 0
 
@@ -48,14 +51,16 @@ while True:
 	# Debug Output
         print timestring + " - " + target_hostname + ": in"
 	# Change blinkstick color
-	led.set_color(name='green')
+	if blinkstick_enabled:
+		led.set_color(name='green')
 	# Reset the disconnect count
 	disconnect_count = 0
     else:
 	# Debug Output
         print timestring + " - " + target_hostname + ": out"
 	# Change blinkstick color
-	led.set_color(name='red')
+	if blinkstick_enabled:
+		led.set_color(name='red')
 	# Increment the disconnect count
 	disconnect_count = disconnect_count + 1
 
