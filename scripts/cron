@@ -1,4 +1,4 @@
-@reboot /usr/local/bin/blinkstick purple --pulse
-@reboot /bin/sleep 15; /bin/bash /opt/raspidash/scripts/start_webserver.sh
-@reboot /bin/sleep 30; /usr/bin/nohup /usr/bin/python /opt/raspidash/raspidash.py &
-
+@reboot /usr/local/bin/blinkstick purple --pulse; /usr/local/bin/blinkstick blue --pulse; /usr/local/bin/blinkstick green --pulse;
+@reboot /bin/sleep 5; /bin/bash /opt/raspidash/scripts/enablevideo.sh; /bin/bash /opt/raspidash/scripts/enableaudio.sh
+@reboot /bin/sleep 20; cd /opt/raspidash/logs; /usr/bin/nohup /usr/bin/python /opt/raspidash/raspidash.py &
+*/5 * * * * /bin/bash /opt/raspidash/scripts/restart_wifi.sh
