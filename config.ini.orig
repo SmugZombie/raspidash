@@ -1,0 +1,12 @@
+[setup]
+target_name=testDevice
+target_mac=B8:53:AC:XX:XX:XX
+
+[debug]
+enabled=True
+debug_path=/opt/raspidash/logs/raspidash-debug.log
+
+[logging]
+enabled=True
+log_path=/opt/raspidash/logs/raspidash.log
+
